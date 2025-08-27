@@ -1,80 +1,67 @@
-# Extract HTML to SCSS
+# Extract HTML to SCSS VS Code Extension
 
-**A Visual Studio Code extension** that automatically extracts SCSS selector structures from HTML files, helping you quickly and consistently convert UI from HTML to SCSS.
+This extension helps you quickly generate SCSS selectors from HTML files in your workspace. It is especially useful for front-end developers who want to convert HTML structure into SCSS selectors for styling.
 
+## Features
+- Extract SCSS selectors.
+- Optionally prepend a root selector to all child selectors.
+- Ignores specified classes.
+- Works with any HTML file in your workspace.
+- Inserts generated SCSS directly into your active editor.
+
+## How to Use
+1. **Open your target SCSS file**
+   - Make sure you have a SCSS or SASS file open in the editor where you want to insert the generated code.
+2. **Run the command**
+   - Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) to open the Command Palette.
+   - Search for and select `Extract HTML to SCSS`.
+
+<img src="./media/opening.gif" alt="How to use the extension" width="880" />
+
+3. **Choose the HTML source file**
+   - A quick pick menu will appear. Select the HTML file you want to extract selectors from.
+4. **Enter the root selector**
+   - Input the CSS selector for the root element (e.g., `.container .card`).
+5. **View the result**
+   - The extension will parse the HTML, generate selectors, and insert them at your cursor position in the active SCSS file.
+
+## Example
+Suppose your HTML contains:
+```html
+<div class="container">
+  <div class="card">
+    <h3>Title</h3>
+    <div class="desc">Description</div>
+  </div>
+</div>
+```
+If you enter `.container .card` as the root selector, the extension will generate:
+```css
+.container .card { 
+  h3 {}
+  .desc {}
+}
+
+```
+
+## Configuration
+- **Ignore Classes:** You can customize the ignore list in the source code (`IGNORE_CLASS_PATTERNS`). Classes matching these patterns will not be included in the output.
+- **Step01** go to Extensions -> Extract HTML to SCSS -> select setting
+
+<img src="./media/setting_img01.png" alt="How to setting ignore classes of the extension: step01" width="880" />  
+
+- **Step02** edit ignore classes to hide when extract scss (the classes are ignored should the tag for text when responsive layout) 
+
+<img src="./media/setting_img02.png" alt="How to setting ignore classes of the extension: step02" width="880" />  
+## Requirements
+- Works with any workspace containing HTML and SCSS files.
+- No additional configuration needed.
+
+## Support
+If you encounter issues or have suggestions, feel free to open an issue or contribute to the project.
+contact: truongquocdat100696@gmail.com
+
+## Author
+Dat TQ
 ---
-
-## 📌 Features
-
-- **Smart file selection**  
-  Automatically detects and prioritizes HTML files (`index.html`, `under.html`, `main.html`).
-
-- **Custom extraction scope**  
-  Enter a root selector (e.g., `.idxn01 .card`) to define the starting point for extraction.
-
-- **DOM traversal & SCSS generation**  
-  - Generates **nested SCSS selectors** based on `class` or `id`.  
-  - Ignores unnecessary classes (supports wildcard patterns, e.g., `br_*`).  
-  - Avoids duplicate selectors at the same level.
-
-- **Special heading handling**  
-  Dedicated blocks for heading tags (`h3`, `h4`, `h5`, `h6`).
-
-- **Seamless insertion**  
-  Inserts the generated SCSS directly into the currently open SCSS/CSS file at the cursor position, or creates a new file if no editor is open.
-
----
-
-## ⚙️ Requirements
-
-- **Node.js** `>= 18`
-- **VS Code** `>= 1.70`
-- Workspace must contain at least **one HTML file**.
-
----
-
-## 🚀 Installation & Usage
-
-1. **Install**  
-   - From the [VS Code Marketplace](https://marketplace.visualstudio.com/)  
-   - Or manually via a `.vsix` file.
-
-2. **Open your SCSS/CSS file**  
-   Where you want to insert the generated selectors.
-
-3. **Run the command**  
-   - Open the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P` on macOS).  
-   - Select **"Extract HTML to SCSS"**.
-
-4. **Follow the prompts**  
-   - Select the source HTML file.  
-   - Enter the root selector.  
-   - Receive the generated SCSS structure.
-
----
-
-## 🔧 Configuration
-
-- No special configuration is required.  
-- To change ignored classes, modify the `IGNORE_CLASS_PATTERNS` array in the extension source code.
-
----
-
-## ⚠️ Known Issues
-
-- Works best with **valid HTML** (not designed for severely malformed files).
-- Generates **only selector structures**, not CSS properties.
-
----
-
-## 📦 Release Notes
-
-### **1.0.0**
-- Initial release:
-  - Extract SCSS from HTML.
-  - Ignore unnecessary classes.
-  - Prioritize special files (`index.html`, `under.html`, `main.html`).
-
----
-
-**Author:** DatTQ
+**Enjoy faster SCSS workflow with Extract HTML to SCSS!**
